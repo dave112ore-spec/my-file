@@ -62,6 +62,10 @@ background-color: rgba(42, 142, 243, 0.2);
    left:420px;
    right:120px;
 }
+.errorpass:hover{
+      background-color: black;
+      color: white;
+}
         </style>
     </head>
     <body>
@@ -95,7 +99,7 @@ background-color: rgba(42, 142, 243, 0.2);
           <h1 id="h1sign">saign in</h1>
            <br>
          <label id="labelemail">email address</label>
-        <input type="text" id="signinUserName" placeholder="user@gmail.com"/>
+        <input type="text" id="signinUserName" placeholder="Just User-Name"/>
          <br>
           <label id="labelpass">Password</label>
         <input type="password" id="signPassword" placeholder="*******" required/>
@@ -106,6 +110,7 @@ background-color: rgba(42, 142, 243, 0.2);
         </div>
     </div>
     <span id="errorpass" class="errorpass"></span>
+    <span id="atleast" class="atleast"></span>
 </form>
 
 
@@ -121,6 +126,7 @@ let labelemail=document.getElementById("labelemail");
 let labelpass=document.getElementById("labelpass");
 let allbtn=document.getElementById("allbtn");
 let h1sign=document.getElementById("h1sign");
+let atleast=document.getElementById("atleast");
 
 regbtn.addEventListener("click",function(){
     signindata.classList.remove("show");
@@ -134,8 +140,12 @@ document.title="Registration";
 signindata.classList.add("show");
 personalinforamtion.classList.remove("show");
 
-if(signinUserName.value.trim()=="s" && signPassword.value==123){
-errorpass.textContent="don't share this, but your username and password are correct and a code syntax is contiue ...";
+if(signinUserName.value.trim().length=="" && signPassword.value.length==""){
+window.alert("please enter atleast one character");
+
+}
+if(signinUserName.value.trim().length>=1 && signPassword.value.length>=1){
+errorpass.textContent="don't share this, but your username and password are correct and a code html,css and JavaScript  will contiue updating...";
 errorpass.style.display="block";
 signinUserName.style.display="none";
 h1sign.style.display="none";
@@ -145,7 +155,9 @@ regbtn.style.display="none";
 labelemail.style.display="none";
 labelpass.style.display="none";
 allbtn.style.display="none";
+atleast.style.display="none";
 }
+
 else{
     errorpass.textContent="your pass word is Incorrect";
 }
