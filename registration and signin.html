@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <style>
+.all{
+    display:flex;
+    
+    flex-direction: column;
+
+
+}
+
+input{
+    margin:12px;
+}
+.personalinforamtion,.signindata{
+    display: none;
+}
+.show{
+    display: block;
+}
+
+        </style>
+    </head>
+    <body>
+<form>
+    <div id="all" class="all">
+   
+        <div id="personalinforamtion" class="personalinforamtion">
+                 <h1>Registration</h1>
+             <br>
+        <label for="UserName">User Name</label>
+        <input type="text" id="UserName" placeholder="User Name"/>
+         <br>
+         <label>Last Name</label>
+        <input type="text" id="LastName" placeholder="Last Name"/>
+        <br>
+         <label>Age</label>
+        <input type="number" id="age" placeholder="Age"/>
+         <br>
+         <label>Phone Number</label>
+        <input type="tel" id="Phone" placeholder="000-000-00-00"/>
+         <br>
+         <label>email address</label>
+        <input type="text" id="email" placeholder="user@gmail.com"/>
+         <br>
+          <label>Password</label>
+        <input type="password" id="regPassword" placeholder="*******"/>
+        </div>
+         <br>
+          <div id="signindata" class="signindata">
+             <br>
+          <h1>saign in</h1>
+           <br>
+         <label>email address</label>
+        <input type="text" id="signinUserName" placeholder="user@gmail.com"/>
+         <br>
+          <label>Password</label>
+        <input type="password" id="signPassword" placeholder="*******"/>
+        </div>
+        <div id="allbtn">
+            <button type="button" id="regbtn">Sign up</button>
+             <button type="button" id="signinbtn">Sign in</button>
+        </div>
+    </div>
+</form>
+
+
+        <script>
+let personalinforamtion=document.getElementById("personalinforamtion");
+let signindata=document.getElementById("signindata");
+let regbtn=document.getElementById("regbtn");
+let signinbtn=document.getElementById("signinbtn");
+
+regbtn.addEventListener("click",function(){
+    signindata.classList.remove("show");
+personalinforamtion.classList.add("show");
+document.title="Registration";
+
+});
+
+
+ signinbtn.addEventListener("click",function(){
+signindata.classList.add("show");
+personalinforamtion.classList.remove("show");
+document.title="sign In";
+});
+
+        </script>
+    </body>
+</html>
