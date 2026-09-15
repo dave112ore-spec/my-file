@@ -18,7 +18,50 @@ input{
 .show{
     display: block;
 }
-
+.allbtn{
+    width:420px;
+    height:40px;
+    padding: 15px;
+    border-radius:8px;
+    border:0.5px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-direction:row;
+    text-align: center;
+    box-shadow:0px 2px 5px yellow;
+}
+button{
+     width:120px;
+    height:40px;
+    padding: 25px;
+    border-radius:8px;
+    background-color: brown;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+     text-align: center;
+     font-size:16px;
+     font-weight: bold;
+      box-shadow:inset 0px 2px 6px blue;
+}
+button:hover{
+background-color: rgba(42, 142, 243, 0.2);
+}
+.errorpass{
+     width:620px;
+    height:120px;
+    padding: 30px;
+    border-radius:8px;
+    background-color: brown;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+    font-size:35px; display: none;
+   position: absolute;
+   left:420px;
+   right:120px;
+}
         </style>
     </head>
     <body>
@@ -49,19 +92,20 @@ input{
          <br>
           <div id="signindata" class="signindata">
              <br>
-          <h1>saign in</h1>
+          <h1 id="h1sign">saign in</h1>
            <br>
-         <label>email address</label>
+         <label id="labelemail">email address</label>
         <input type="text" id="signinUserName" placeholder="user@gmail.com"/>
          <br>
-          <label>Password</label>
-        <input type="password" id="signPassword" placeholder="*******"/>
+          <label id="labelpass">Password</label>
+        <input type="password" id="signPassword" placeholder="*******" required/>
         </div>
-        <div id="allbtn">
+        <div id="allbtn" class="allbtn">
             <button type="button" id="regbtn">Sign up</button>
              <button type="button" id="signinbtn">Sign in</button>
         </div>
     </div>
+    <span id="errorpass" class="errorpass"></span>
 </form>
 
 
@@ -69,7 +113,14 @@ input{
 let personalinforamtion=document.getElementById("personalinforamtion");
 let signindata=document.getElementById("signindata");
 let regbtn=document.getElementById("regbtn");
+let errorpass=document.getElementById("errorpass");
 let signinbtn=document.getElementById("signinbtn");
+let signinUserName=document.getElementById("signinUserName");
+let signPassword=document.getElementById("signPassword");
+let labelemail=document.getElementById("labelemail");
+let labelpass=document.getElementById("labelpass");
+let allbtn=document.getElementById("allbtn");
+let h1sign=document.getElementById("h1sign");
 
 regbtn.addEventListener("click",function(){
     signindata.classList.remove("show");
@@ -82,7 +133,25 @@ document.title="Registration";
  signinbtn.addEventListener("click",function(){
 signindata.classList.add("show");
 personalinforamtion.classList.remove("show");
+
+if(signinUserName.value.trim()=="s" && signPassword.value==123){
+errorpass.textContent="don't share this, but your username and password are correct and a code syntax is contiue ...";
+errorpass.style.display="block";
+signinUserName.style.display="none";
+h1sign.style.display="none";
+signPassword.style.display="none";
+signinbtn.style.display="none";
+regbtn.style.display="none";
+labelemail.style.display="none";
+labelpass.style.display="none";
+allbtn.style.display="none";
+}
+else{
+    errorpass.textContent="your pass word is Incorrect";
+}
+
 document.title="sign In";
+
 });
 
         </script>
