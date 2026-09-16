@@ -66,6 +66,30 @@ background-color: rgba(42, 142, 243, 0.2);
       background-color: black;
       color: white;
 }
+.hidemenu{
+    display: none;
+}
+.firmsearch{
+    width:240px;
+    height:40px;
+    padding:10px;
+    border-radius:8px;
+    border: 1px solid black;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+     margin-top:15px;
+}
+.searchtext{
+   
+    border:none;
+    outline: none;
+    padding:8px;
+}
+.menufrim{
+    display: none;
+}
+
       </style>
         
     </head>
@@ -112,12 +136,35 @@ background-color: rgba(42, 142, 243, 0.2);
     </div>
     <span id="errorpass" class="errorpass"></span>
     <span id="atleast" class="atleast"></span>
+    <div class="border_menu">
+<div id="menufrim" class="menufrim">
+<div id="firmserach" class="firmsearch">
+   
+    <input type="text" id="searchtext" class="searchtext"/>
+   <label for="searchtext">🔍</label>
+</div>
+<div class="menu">html</div>
+<div class="menu">css</div>
+<div class="menu">javscript</div>
+<div class="menu">githup</div>
+<div class="menu">python</div>
+<div class="menu">react</div>
+<div class="menu">photoshop cs4</div>
+<div class="menu">peachtree</div>
+<div class="menu">sage 8</div>
+<div class="menu">ms-exel</div>
+<div class="menu">ms-access</div>
+<div class="menu">ms-word</div>
+
+    </div>
+    <span id="itemnotfound"></span>
 </form>
 
 
         <script>
             let personalinforamtion=document.getElementById("personalinforamtion");
 let signindata=document.getElementById("signindata");
+
 let regbtn=document.getElementById("regbtn");
 let errorpass=document.getElementById("errorpass");
 let signinbtn=document.getElementById("signinbtn");
@@ -128,6 +175,7 @@ let labelpass=document.getElementById("labelpass");
 let allbtn=document.getElementById("allbtn");
 let h1sign=document.getElementById("h1sign");
 let atleast=document.getElementById("atleast");
+let menufrim=document.getElementById("menufrim");
 
 regbtn.addEventListener("click",function(){
     signindata.classList.remove("show");
@@ -141,12 +189,13 @@ document.title="Registration";
 signindata.classList.add("show");
 personalinforamtion.classList.remove("show");
 
+
 if(signinUserName.value.trim().length=="" && signPassword.value.length==""){
 window.alert("please enter atleast one character");
 
 }
 if(signinUserName.value.trim().length>=1 && signPassword.value.length>=1){
-errorpass.textContent="don't share this, but your username and password are correct and a code html,css and JavaScript  will contiue updating...";
+errorpass.textContent="Seacrch your word...";
 errorpass.style.display="block";
 signinUserName.style.display="none";
 h1sign.style.display="none";
@@ -157,6 +206,7 @@ labelemail.style.display="none";
 labelpass.style.display="none";
 allbtn.style.display="none";
 atleast.style.display="none";
+menufrim.style.display="block";
 }
 
 else{
@@ -166,6 +216,28 @@ else{
 document.title="sign In";
 
 });
+
+let menu = document.querySelectorAll(".menu");
+let searchtext = document.getElementById("searchtext");
+let itemnotfound = document.getElementById("itemnotfound");
+ searchtext.addEventListener("input",function(){
+      let firsvaluetolowercase=searchtext.value.toLowerCase();
+menu.forEach((forall)=>{
+  let secondvaluetolowercase=forall.textContent.toLowerCase();
+
+
+if(secondvaluetolowercase.includes(firsvaluetolowercase)){
+    forall.classList.remove("hidemenu");
+   
+}
+else{
+      forall.classList.add("hidemenu");
+       itemnotfound.innerHTML=`Item not found ${searchtext.value}`;
+}
+})
+})
+
+
 
         </script>
     </body>
