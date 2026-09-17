@@ -1,0 +1,244 @@
+<html>
+    <head>
+      <style>
+        .all{
+    display:flex;
+    
+    flex-direction: column;
+
+
+}
+
+input{
+    margin:12px;
+}
+.personalinforamtion,.signindata{
+    display: none;
+}
+.show{
+    display: block;
+}
+.allbtn{
+    width:420px;
+    height:40px;
+    padding: 15px;
+    border-radius:8px;
+    border:0.5px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-direction:row;
+    text-align: center;
+    box-shadow:0px 2px 5px yellow;
+}
+button{
+     width:120px;
+    height:40px;
+    padding: 25px;
+    border-radius:8px;
+    background-color: brown;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+     text-align: center;
+     font-size:16px;
+     font-weight: bold;
+      box-shadow:inset 0px 2px 6px blue;
+}
+button:hover{
+background-color: rgba(42, 142, 243, 0.2);
+}
+.errorpass{
+     width:620px;
+    height:120px;
+    padding: 30px;
+    border-radius:8px;
+    background-color: brown;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+    font-size:35px; display: none;
+   position: absolute;
+   left:420px;
+   right:120px;
+}
+.errorpass:hover{
+      background-color: black;
+      color: white;
+}
+.hidemenu{
+    display: none;
+}
+.firmsearch{
+    width:240px;
+    height:40px;
+    padding:10px;
+    border-radius:8px;
+    border: 1px solid black;
+    display: flex;
+     justify-content: center;
+    align-items:center;
+     margin-top:15px;
+}
+.searchtext{
+   
+    border:none;
+    outline: none;
+    padding:8px;
+}
+.menufrim{
+    display: none;
+}
+
+      </style>
+        
+    </head>
+    <body>
+<form>
+    <div id="all" class="all">
+   
+        <div id="personalinforamtion" class="personalinforamtion">
+                 <h1>Registration</h1>
+             <br>
+        <label for="UserName">User Name</label>
+        <input type="text" id="UserName" placeholder="User Name"/>
+         <br>
+         <label>Last Name</label>
+        <input type="text" id="LastName" placeholder="Last Name"/>
+        <br>
+         <label>Age</label>
+        <input type="number" id="age" placeholder="Age"/>
+         <br>
+         <label>Phone Number</label>
+        <input type="tel" id="Phone" placeholder="000-000-00-00"/>
+         <br>
+         <label>email address</label>
+        <input type="text" id="email" placeholder="user@gmail.com"/>
+         <br>
+          <label>Password</label>
+        <input type="password" id="regPassword" placeholder="*******"/>
+        </div>
+         <br>
+          <div id="signindata" class="signindata">
+             <br>
+          <h1 id="h1sign">saign in</h1>
+           <br>
+         <label id="labelemail">email address</label>
+        <input type="text" id="signinUserName" placeholder="Just User-Name"/>
+         <br>
+          <label id="labelpass">Password</label>
+        <input type="password" id="signPassword" placeholder="*******" required/>
+        </div>
+        <div id="allbtn" class="allbtn">
+            <button type="button" id="regbtn">Sign up</button>
+             <button type="button" id="signinbtn">Sign in</button>
+        </div>
+    </div>
+    <span id="errorpass" class="errorpass"></span>
+    <span id="atleast" class="atleast"></span>
+    <div class="border_menu">
+<div id="menufrim" class="menufrim">
+<div id="firmserach" class="firmsearch">
+   
+    <input type="text" id="searchtext" class="searchtext"/>
+   <label for="searchtext">🔍</label>
+</div>
+<div class="menu">html</div>
+<div class="menu">css</div>
+<div class="menu">javscript</div>
+<div class="menu">githup</div>
+<div class="menu">python</div>
+<div class="menu">react</div>
+<div class="menu">photoshop cs4</div>
+<div class="menu">peachtree</div>
+<div class="menu">sage 8</div>
+<div class="menu">ms-exel</div>
+<div class="menu">ms-access</div>
+<div class="menu">ms-word</div>
+
+    </div>
+    <span id="itemnotfound"></span>
+</form>
+
+
+        <script>
+            let personalinforamtion=document.getElementById("personalinforamtion");
+let signindata=document.getElementById("signindata");
+
+let regbtn=document.getElementById("regbtn");
+let errorpass=document.getElementById("errorpass");
+let signinbtn=document.getElementById("signinbtn");
+let signinUserName=document.getElementById("signinUserName");
+let signPassword=document.getElementById("signPassword");
+let labelemail=document.getElementById("labelemail");
+let labelpass=document.getElementById("labelpass");
+let allbtn=document.getElementById("allbtn");
+let h1sign=document.getElementById("h1sign");
+let atleast=document.getElementById("atleast");
+let menufrim=document.getElementById("menufrim");
+
+regbtn.addEventListener("click",function(){
+    signindata.classList.remove("show");
+personalinforamtion.classList.add("show");
+document.title="Registration";
+
+});
+
+
+ signinbtn.addEventListener("click",function(){
+signindata.classList.add("show");
+personalinforamtion.classList.remove("show");
+
+
+if(signinUserName.value.trim().length=="" && signPassword.value.length==""){
+window.alert("please enter atleast one character");
+
+}
+if(signinUserName.value.trim().length>=1 && signPassword.value.length>=1){
+errorpass.textContent="Seacrch your word...";
+errorpass.style.display="block";
+signinUserName.style.display="none";
+h1sign.style.display="none";
+signPassword.style.display="none";
+signinbtn.style.display="none";
+regbtn.style.display="none";
+labelemail.style.display="none";
+labelpass.style.display="none";
+allbtn.style.display="none";
+atleast.style.display="none";
+menufrim.style.display="block";
+}
+
+else{
+    errorpass.textContent="your pass word is Incorrect";
+}
+
+document.title="sign In";
+
+});
+
+let menu = document.querySelectorAll(".menu");
+let searchtext = document.getElementById("searchtext");
+let itemnotfound = document.getElementById("itemnotfound");
+ searchtext.addEventListener("input",function(){
+      let firsvaluetolowercase=searchtext.value.toLowerCase();
+menu.forEach((forall)=>{
+  let secondvaluetolowercase=forall.textContent.toLowerCase();
+
+
+if(secondvaluetolowercase.includes(firsvaluetolowercase)){
+    forall.classList.remove("hidemenu");
+   
+}
+else{
+      forall.classList.add("hidemenu");
+       itemnotfound.innerHTML=`Item not found ${searchtext.value}`;
+}
+})
+})
+
+
+
+        </script>
+    </body>
+</html>

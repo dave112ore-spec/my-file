@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+.hideitem{
+    display: none;
+}
+        </style>
+    </head>
+    <body>
+
+<input type="text" id="inputtext"/>
+<div class="Countries">USA</div>
+<div class="Countries">Ethiopia</div>
+<div class="Countries">Egpt</div>
+<div class="Countries">Nemya</div>
+<div class="Countries">Uganda</div>
+<div class="Countries">South Africa</div>
+<div class="Countries">England</div>
+<div class="Countries">Chaina</div>
+<div class="Countries">Canada</div>
+<div class="Countries">Mexico</div>
+        <script>
+let Countries=document.querySelectorAll(".countries");
+let inputtext=document.getElementById("inputtext");
+
+inputtext.addEventListener("input",function(){
+
+    let inputexttolowercase=inputtext.value.toLowerCase();
+Countries.forEach((nameofcountries)=>{
+    let countriestolowercase=nameofcountries.textContent.toLowerCase();
+   
+     if (countriestolowercase.includes(inputexttolowercase)) {
+        nameofcountries.classList.remove("hideitem");
+      }
+     else{
+        nameofcountries.classList.add("hideitem");
+      }
+
+    })
+
+})
+
+        </script>
+    </body>
+</html>
+
+
